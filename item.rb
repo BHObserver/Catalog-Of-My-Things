@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Represents an item in the catalog.
 class Item
   attr_accessor :title, :description, :published_date, :archived
