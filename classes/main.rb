@@ -1,5 +1,5 @@
 # main.rb
-  def main
+def main
     puts 'Welcome to the Catalog of my things App!'
   loop do
     puts 'Please select an option:'
