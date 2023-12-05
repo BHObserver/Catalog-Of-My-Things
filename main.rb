@@ -1,10 +1,13 @@
+require_relative 'app'
+require_relative 'add_books'
+
 # main.rb
 def display_menu
   puts 'Please select an option:'
-  puts '1. List all books'
-  puts '2. List all labels'
-  puts '3. Add a book'
-  puts '4. Exit'
+  puts '1. 📖  List all books'
+  puts '2. 🏷️  List all labels'
+  puts '3. 📖  Add a book'
+  puts '4. 🚪  Exit'
 end
 
 def main
@@ -15,11 +18,11 @@ def main
     options = gets.chomp.to_i
     case options
     when 1
-      list_all_books
+      app.list_all_books
     when 2
-      list_all_labels
+      app.list_all_labels
     when 3
-      add_book
+      add_books.add_book
     when 4
       puts 'Exiting the program. Goodbye!'
       break
