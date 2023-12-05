@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'item'
 
+# book.rb
 class Book < Item
   attr_accessor :publisher, :published_date, :cover_state
 

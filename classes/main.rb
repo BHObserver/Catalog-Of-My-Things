@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
+# main.rb
 def main
   puts 'Welcome to the Catalog of my things App!'
-  puts '<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>'
   puts
   loop do
     puts 'Please select an option:'
