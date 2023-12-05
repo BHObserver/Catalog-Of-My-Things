@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'genre'
 require_relative 'author'
 require_relative 'label'
@@ -7,7 +8,7 @@ require 'securerandom'
 
 # class item
 class Item
-  attr_accessor :published_date, :genre, :author, :label, :collection 
+  attr_accessor :published_date, :genre, :author, :label, :collection
 
   def initialize(published_date)
     @id = generate_id
