@@ -1,7 +1,6 @@
 # main.rb
-def main
-  puts 'Welcome to the Catalog of my things App!'
-  puts
+  def main
+    puts 'Welcome to the Catalog of my things App!'
   loop do
     puts 'Please select an option:'
     puts '1. List all books'
