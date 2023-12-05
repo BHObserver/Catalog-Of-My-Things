@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'date'
 
+# item.rb
 class Item
   attr_accessor :genres, :authors, :labels, :source, :published_date, :archived
   attr_reader :id
