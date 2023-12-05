@@ -10,9 +10,9 @@ class Item
 
   def initialize(published_date)
     @id = generate_id
-    @genre = Genre
-    @author = Author
-    @label = Label
+    @genre = genre
+    @author = author
+    @label = label
     @published_date = published_date
     @archived = false
     @item_collection = []
