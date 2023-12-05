@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # main.rb
 def main
   puts 'Welcome to the Catalog of my things App!'
