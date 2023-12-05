@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'date'
 # Game Class
 class Game < Item
