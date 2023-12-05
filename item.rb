@@ -1,28 +1,50 @@
 # frozen_string_literal: true
-
+require_relative 'genre'
+require_relative 'author'
+require_relative 'label'
 require 'date'
+require 'securerandom'
 
 # class item
 class Item
-  attr_accessor :published_date, :genre, :author, :source, :label
+  attr_accessor :published_date, :genre, :author, :label, :collection 
 
   def initialize(published_date)
-    @id = rand(1...1000)
-    @genre = genre
-    @author = author
-    @source = source
-    @label = label
+    @id = generate_id
+    @genre = Genre
+    @author = Author
+    @label = Label
     @published_date = published_date
     @archived = false
+    @item_collection = []
   end
 
-  private
+  def add_label(label)
+    @item_collection << label
+    label.add_item(self) if label
+  end
 
-  def can_be_archived?
-    (Date.today - @published_date).to_i > 365 * 10
+  def add_genre(genre)
+    @item_collection << genre
+    genre.add_item(self) if genre
+  end
+
+  def add_author(author)
+    @item_collection << author
+    author.add_item(self) if genre
   end
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  private
+
+  def generate_id
+    SecureRandom.rand(1..1000)
+  end
+
+  def can_be_archived?
+    (Date.today - @published_date).to_i > 365 * 10
   end
 end
