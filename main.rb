@@ -45,6 +45,24 @@ class CatalogApp
   def exit_app
     puts "\e[31mThank you for using this app! ♥️ \e[0m"
   end
+
+  def display_main_options
+    puts 'Please enter an option [1-13]:'
+    puts '1. List all books'
+    puts '2. List all music albums'
+    puts '3. List all games'
+    puts '4. List all genres'
+    puts '5. List all labels'
+    puts '6. List all authors'
+    puts '7. List all movies'
+    puts '8. List all sources'
+    puts '9. Add a book'
+    puts '10. Add a music album'
+    puts '11. Add a game'
+    puts '12. Add a movie'
+    puts '13. Exit'
+    print 'Your choice: '
+  end
 end
 
 CatalogApp.new.start
