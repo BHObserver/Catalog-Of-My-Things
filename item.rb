@@ -21,17 +21,17 @@ class Item
 
   def add_label(label)
     @item_collection << label
-    label.add_item(self) if label
+    label.add_item(self)
   end
 
   def add_genre(genre)
     @item_collection << genre
-    genre.add_item(self) if genre
+    genre.add_item(self)
   end
 
   def add_author(author)
     @item_collection << author
-    author.add_item(self) if genre
+    author.add_item(self)
   end
 
   def move_to_archive
