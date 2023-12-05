@@ -33,3 +33,7 @@ def main
 end
 
 main
+
+def add_book
+  puts "Enter the book name: "
+end
