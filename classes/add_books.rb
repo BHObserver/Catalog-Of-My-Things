@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# add_books class
 class AddBooks
   def initialize(app)
     @app = app
