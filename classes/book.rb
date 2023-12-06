@@ -1,7 +1,4 @@
-require_relative 'item'
-
-# book.rb
-class Book < Item
+class Book
   attr_accessor :publisher, :published_date, :cover_state
 
   def initialize(published_date, publisher, cover_state, archived: true)

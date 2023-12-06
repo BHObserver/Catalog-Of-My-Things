@@ -1,6 +1,5 @@
 require_relative 'item'
 
-# genre class
 class Genre < Item
   attr_accessor :name, :albums
   attr_reader :id
@@ -9,13 +8,13 @@ class Genre < Item
     super(published_date)
     @id = generate_id
     @name = name
-    @albums = []
+    @items = []
   end
 
   def add_item(item)
     return if @album.include?(item)
 
-    @albums << item
+    @items << item
     item.add_genre(self)
   end
 

@@ -1,4 +1,3 @@
-# Author Class
 class Author
   attr_accessor :id, :first_name, :last_name
   attr_reader :items
