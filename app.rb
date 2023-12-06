@@ -1,8 +1,6 @@
-require_relative 'classes/game'
+require_relative 'classes/games'
 require_relative 'classes/author'
 require_relative 'modules/game_module'
-require_relative 'modules/storage'
-require 'json'
 require 'date'
 
 class App
