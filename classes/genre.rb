@@ -15,7 +15,7 @@ class Genre < Item
     return if @album.include?(item)
 
     @items << item
-    item.add_genre(self)
+    item.genre(self)
   end
 
   private
