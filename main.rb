@@ -24,7 +24,6 @@ def main
   loop do
     display_menu
     input = gets.chomp.downcase
-
     break if handle_input(input)
   end
 end

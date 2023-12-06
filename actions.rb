@@ -22,7 +22,7 @@ def handle_input(choice)
     # Logic to add a game
   when 'x'
     puts 'Exiting...'
-    break
+    # break
   else
     puts 'Invalid option. Please enter a letter between a and i or x (to exit).'
   end
