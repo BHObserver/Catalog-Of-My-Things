@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
 require_relative 'item'
 
-# label class
 class Label < Item
   attr_accessor :title, :color, :items
   attr_reader :id
