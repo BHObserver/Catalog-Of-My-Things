@@ -1,36 +1,32 @@
 require_relative 'classes/games'
 require_relative 'classes/author'
-require_relative 'modules/game_module'
-require 'date'
+require './modules/author_module'
+require './modules/game_module'
 
 class App
   include GameModule
-  include StorageModule
+  include AuthorModule
+
+  attr_reader :labels, :games, :authors
 
   def initialize
-    @games = load_games
-    @authors = load_authors
-    @game_manager = GameManager.new(@games, @authors)
+    @labels = []
+    @games = []
+    @authors = []
   end
 
-  def date_valid?(date)
-    format = '%d/%m/%Y'
-    DateTime.strptime(date, format)
+  private
+
+  def get_date_input(prompt)
+    print "#{prompt}: "
+    Date.parse(gets.chomp)
   rescue ArgumentError
-    'Invalid date format'
+    puts "\e[31mInvalid date format! Please enter in dd/mm/yy format.\e[0m"
+    retry
   end
 
-  # ... (other methods not related to games)
-
-  def list_games
-    @game_manager.list_games
-  end
-
-  def add_game
-    @game_manager.add_game
-  end
-
-  def save_games
-    @game_manager.save_data
+  def get_yes_no_input(prompt)
+    print "#{prompt}: "
+    gets.chomp.downcase == 'y'
   end
 end
