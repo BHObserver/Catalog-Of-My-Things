@@ -4,9 +4,8 @@ require_relative 'label'
 require 'date'
 require 'securerandom'
 
-# class item
 class Item
-  attr_accessor :published_date, :genre, :author, :label, :collection
+  attr_accessor :published_date
 
   def initialize(published_date)
     @id = generate_id
@@ -15,26 +14,18 @@ class Item
     @label = label
     @published_date = published_date
     @archived = false
-    @item_collection = []
   end
 
-  def add_label(label)
-    @item_collection << label
-    label.add_item(self)
+  def label=(label)
+    @label = label
+    label.items << self unless label.items.include?(self)
   end
 
-  def add_genre(genre)
-    @item_collection << genre
-    genre.add_item(self)
+  def genre=(item)
+    @genre = item
+    genre.items << self unless genre.items.include?(self)
   end
 
-  # back up of Ometman code
-  # def add_author(author)
-  #   @item_collection << author
-  #   author.add_item(self)
-  # end
-
-  # Burhan code
   def author=(author)
     @author = author
     author.items << self unless author.items.include?(self)

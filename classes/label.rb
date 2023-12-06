@@ -1,8 +1,14 @@
-class Label
+# frozen_string_literal: true
+
+require_relative 'item'
+
+# label class
+class Label < Item
   attr_accessor :title, :color, :items
   attr_reader :id
 
-  def initialize(title, color)
+  def initialize(title, color, **item_params)
+    super(**item_params)
     @id = Random.rand(1..1000)
     @title = title
     @color = color
