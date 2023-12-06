@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def display_menu
   puts "\nWelcome to Catalog of My Things!"
   puts "\nChoose an option by entering an alphabet:"

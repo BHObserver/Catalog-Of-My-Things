@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def handle_input(choice)
   case choice
   when 'a'
