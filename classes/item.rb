@@ -1,3 +1,5 @@
+# item class
+
 require 'securerandom'
 require 'date'
 
