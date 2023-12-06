@@ -30,4 +30,22 @@ module GameModule
     puts "\e[32mGame added successfully!\e[0m"
   end
 
+  def parse_date_input
+    Date.parse(gets.chomp)
+  rescue ArgumentError
+    puts "\e[31mInvalid date format. Please enter a valid date.\e[0m"
+    retry
+  end
+
+  def game_author
+    if @authors.empty?
+      add_author
+      author_index = @authors[0].id
+    else
+      list_authors
+      print "\nEnter author ID: "
+      author_index = gets.chomp.to_i
+    end
+    find_author(author_index)
+  end
 end
