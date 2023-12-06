@@ -1,6 +1,5 @@
-require_relative 'genre'
-require_relative 'author'
-require_relative 'label'
+# frozen_string_literal: true
+
 require 'date'
 require 'securerandom'
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'item'
 
 class Genre < Item
@@ -15,7 +17,7 @@ class Genre < Item
     return if @album.include?(item)
 
     @items << item
-    item.add_genre(self)
+    item.genre(self)
   end
 
   private

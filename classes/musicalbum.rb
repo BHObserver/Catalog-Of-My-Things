@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'date'
-require_relative 'Item'
+require_relative 'item'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify
