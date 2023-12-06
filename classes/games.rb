@@ -1,18 +1,24 @@
-# frozen_string_literal: true
 
-require 'date'
-require_relative 'item'
+require 'active_support/all'
+require './classes/author'
+require './classes/item'
 
 class Game < Item
-  attr_accessor :multiplayer, :last_played_at
+  attr_reader :multiplayer, :last_played_at
 
-  def initialize(multiplayer: false, last_played_at: nil, **item_params)
-    super(**item_params)
+  def initialize(multiplayer:, last_played_at:, publish_date: nil, archived: false)
+    super(publish_date: publish_date, archived: archived)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
   end
 
   def can_be_archived?
-    super && (Date.today - @last_played_at).to_i > 365 * 2
+    super && years_since_last_played > 2
+  end
+
+  private
+
+  def years_since_last_played
+    Time.current.year - @last_played_at.year
   end
 end

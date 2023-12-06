@@ -1,11 +1,10 @@
-# frozen_string_literal: true
-
 class Author
-  attr_accessor :id, :first_name, :last_name
-  attr_reader :items
+  attr_reader :id, :first_name, :last_name, :items
 
-  def initialize(id:, first_name:, last_name:)
-    @id = id
+  ID_RANGE = (1..1000).freeze
+
+  def initialize(first_name:, last_name:)
+    @id = generate_id
     @first_name = first_name
     @last_name = last_name
     @items = []
@@ -13,6 +12,12 @@ class Author
 
   def add_item(item)
     @items << item
-    item.author << self
+    item.author = self unless item.author == self
+  end
+
+  private
+
+  def generate_id
+    Random.rand(ID_RANGE)
   end
 end
