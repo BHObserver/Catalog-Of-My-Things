@@ -27,4 +27,8 @@ module AuthorModule
     @authors << author
     puts "\e[32mAuthor added successfully!\e[0m"
   end
+
+  def find_author(id)
+    @authors.find { |author| author.id == id }
+  end
 end
