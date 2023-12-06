@@ -1,3 +1,5 @@
+# games class
+
 require 'active_support/all'
 require './classes/author'
 require './classes/item'
@@ -19,5 +21,16 @@ class Game < Item
 
   def years_since_last_played
     Time.current.year - @last_played_at.year
+  end
+
+  def to_hash
+    {
+      id: @id,
+      publish_date: @publish_date,
+      archived: @archived,
+      multiplayer: @multiplayer,
+      last_played_at: @last_played_at,
+      author: @author&.to_hash # Convert author to hash as well
+    }
   end
 end
