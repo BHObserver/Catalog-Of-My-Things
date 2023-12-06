@@ -15,4 +15,19 @@ module GameModule
     end
   end
 
+  def add_game
+    puts "\nAdd a game:"
+    puts 'Published date (dd/mm/yy): '
+    publish_date = parse_date_input
+    print 'Multiplayer [Y/N]: '
+    multiplayer = gets.chomp.downcase == 'y'
+    puts 'Last played at (dd/mm/yy): '
+    last_played_at = parse_date_input
+    game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
+    author = game_author
+    author.add_item(game)
+    @games << game
+    puts "\e[32mGame added successfully!\e[0m"
+  end
+
 end
