@@ -1,5 +1,5 @@
 def display_menu
-  puts "\nWelcome to School Library App!"
+  puts "\nWelcome to Catalog of My Things!"
   puts "\nChoose an option by entering an alphabet:"
   puts 'a. List all books'
   puts 'b. List all music albums'
