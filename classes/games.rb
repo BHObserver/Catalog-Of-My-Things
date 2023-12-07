@@ -17,20 +17,18 @@ class Game < Item
     super && years_since_last_played > 2
   end
 
-  private
-
   def years_since_last_played
     Time.current.year - @last_played_at.year
   end
 
-  def to_hash
+  def to_json(option = {})
     {
       id: @id,
       publish_date: @publish_date,
       archived: @archived,
       multiplayer: @multiplayer,
       last_played_at: @last_played_at,
-      author: @author&.to_hash # Convert author to hash as well
-    }
+      author: @author
+    }.to_json(option)
   end
 end
