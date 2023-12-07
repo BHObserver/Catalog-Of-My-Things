@@ -33,7 +33,7 @@ class Item
 
 #     @archived = true
 #   end
-
+# ---------------------------
 # def can_be_archived?
 #     Date.today.year - @publish_date.year > 10
 #     @label = label
