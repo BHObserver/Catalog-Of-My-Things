@@ -16,18 +16,15 @@ class Author
     item.author = self unless item.author == self
   end
 
-  def to_hash
+  def generate_id
+    Random.rand(ID_RANGE)
+  end
+
+  def to_json(option = {})
     {
       id: @id,
       first_name: @first_name,
-      last_name: @last_name,
-      items: @items.map(&:to_hash) # Convert each item to hash
-    }
-  end
-
-  private
-
-  def generate_id
-    Random.rand(ID_RANGE)
+      last_name: @last_name
+    }.to_json(option)
   end
 end
