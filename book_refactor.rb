@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class AddBooks
+class Refactor
   def initialize(app)
     @app = app
   end
@@ -28,17 +26,17 @@ class AddBooks
   end
 
   def ask_cover_state
-    # print 'Cover state of the book [good/bad]: '
-    # loop do
-    #   input = gets.chomp.downcase
-    #   case input
-    #   when 'good'
-    #     return 'good'
-    #   when 'bad'
-    #     return 'bad'
-    #   else
-    #     print 'Please enter a valid input "good" or "bad": '
-    #   end
-    # end
+    print 'Cover state of the book [good/bad]: '
+    loop do
+      input = gets.chomp.downcase
+      case input
+      when 'good'
+        return 'good'
+      when 'bad'
+        return 'bad'
+      else
+        print 'Please enter a valid input "good" or "bad": '
+      end
+    end
   end
 end

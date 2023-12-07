@@ -1,3 +1,8 @@
+# AuthorModule Class
+
+require 'fileutils'
+require_relative '../data_manager'
+
 module AuthorModule
   def list_authors
     if authors.empty?
@@ -14,6 +19,7 @@ module AuthorModule
     last_name = get_input('Last name')
 
     author = Author.new(first_name: first_name, last_name: last_name)
+    DataManager.save_author(author)
     authors << author
     puts "\e[32mAuthor added successfully!\e[0m"
   end
@@ -34,7 +40,7 @@ module AuthorModule
     puts '---------------------------------------------------------'
 
     authors.each do |author|
-      puts "| #{author.id} \t\t| #{author.full_name.ljust(30)}|"
+      puts "| #{author.id} \t\t| #{author.first_name} #{author.last_name}"
       puts '---------------------------------------------------------'
     end
   end

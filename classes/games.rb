@@ -1,3 +1,5 @@
+# games class
+
 require 'active_support/all'
 require './classes/author'
 require './classes/item'
@@ -15,9 +17,18 @@ class Game < Item
     super && years_since_last_played > 2
   end
 
-  private
-
   def years_since_last_played
     Time.current.year - @last_played_at.year
+  end
+
+  def to_json(option = {})
+    {
+      id: @id,
+      publish_date: @publish_date,
+      archived: @archived,
+      multiplayer: @multiplayer,
+      last_played_at: @last_played_at,
+      author: @author
+    }.to_json(option)
   end
 end

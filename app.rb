@@ -1,5 +1,6 @@
 require_relative 'classes/games'
 require_relative 'classes/author'
+require_relative 'data_manager'
 require './modules/author_module'
 require './modules/game_module'
 
@@ -10,9 +11,8 @@ class App
   attr_reader :labels, :games, :authors
 
   def initialize
-    @labels = []
-    @games = []
-    @authors = []
+    @games = DataManager.load_games
+    @authors = DataManager.load_authors
   end
 
   private

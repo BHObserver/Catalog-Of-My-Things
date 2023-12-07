@@ -1,3 +1,8 @@
+# GameModule Class
+
+require 'fileutils'
+require_relative '../data_manager'
+
 module GameModule
   def list_games
     if games.empty?
@@ -17,6 +22,7 @@ module GameModule
     game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
     author = game_author
     author.add_item(game)
+    DataManager.save_game(game)
     games << game
     puts "\e[32mGame added successfully!\e[0m"
   end
