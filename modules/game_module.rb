@@ -27,47 +27,47 @@ module GameModule
     puts "\e[32mGame added successfully!\e[0m"
   end
 
-#   def game_author
-#     if authors.empty?
-#       add_author
-#       authors.first
-#     else
-#       list_authors
-#       print "\nEnter author ID: "
-#       author_index = gets.chomp.to_i
-#       find_author(author_index)
-#     end
-#   end
+  def game_author
+    if authors.empty?
+      add_author
+      authors.first
+    else
+      list_authors
+      print "\nEnter author ID: "
+      author_index = gets.chomp.to_i
+      find_author(author_index)
+    end
+  end
 
-#   private
+  private
 
-#   def games
-#     @games ||= []
-#   end
+  def games
+    @games ||= []
+  end
 
-#   def display_game_table
-#     puts '-------------------------------------------------------------------------'
-#     puts "| Publish Date \t\t| Mode \t\t\t| Last Played At \t|"
-#     puts '-------------------------------------------------------------------------'
+  def display_game_table
+    puts '-------------------------------------------------------------------------'
+    puts "| Publish Date \t\t| Mode \t\t\t| Last Played At \t|"
+    puts '-------------------------------------------------------------------------'
 
-#     games.each do |game|
-#       puts "| #{game.publish_date} \t\t| " \
-#            "#{game.multiplayer ? 'Multiplayer' : 'Singleplayer'}\t\t| " \
-#            "#{game.last_played_at}\t\t|"
-#       puts '-------------------------------------------------------------------------'
-#     end
-#   end
+    games.each do |game|
+      puts "| #{game.publish_date} \t\t| " \
+           "#{game.multiplayer ? 'Multiplayer' : 'Singleplayer'}\t\t| " \
+           "#{game.last_played_at}\t\t|"
+      puts '-------------------------------------------------------------------------'
+    end
+  end
 
-#   def get_date_input(prompt)
-#     print "#{prompt}: "
-#     Date.parse(gets.chomp)
-#   rescue ArgumentError
-#     puts "\e[31mInvalid date format! Please enter in dd/mm/yy format.\e[0m"
-#     retry
-#   end
+  def get_date_input(prompt)
+    print "#{prompt}: "
+    Date.parse(gets.chomp)
+  rescue ArgumentError
+    puts "\e[31mInvalid date format! Please enter in dd/mm/yy format.\e[0m"
+    retry
+  end
 
-#   def get_yes_no_input(prompt)
-#     print "#{prompt}: "
-#     gets.chomp.downcase == 'y'
-#   end
-# end
+  def get_yes_no_input(prompt)
+    print "#{prompt}: "
+    gets.chomp.downcase == 'y'
+  end
+end
