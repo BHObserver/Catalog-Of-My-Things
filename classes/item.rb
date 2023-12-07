@@ -9,36 +9,36 @@ class Item
     @publish_date = Date.parse(publish_date)
   end
 
-# require 'securerandom'
+  # require 'securerandom'
 
-# require 'date'
-# require 'securerandom'
+  # require 'date'
+  # require 'securerandom'
 
-# class Item
-#   attr_accessor :publish_date
-#   attr_reader :id, :archived, :label, :author
+  # class Item
+  #   attr_accessor :publish_date
+  #   attr_reader :id, :archived, :label, :author
 
-#   def initialize(publish_date: nil, archived: false)
-#     @id = SecureRandom.uuid
-#     @publish_date = publish_date
-#     @archived = archived
-#   end
+  #   def initialize(publish_date: nil, archived: false)
+  #     @id = SecureRandom.uuid
+  #     @publish_date = publish_date
+  #     @archived = archived
+  #   end
 
-#   def label=(label)
-#     @labels << label unless @labels.include?(label)
-#   end
+  #   def label=(label)
+  #     @labels << label unless @labels.include?(label)
+  #   end
 
-#   def move_to_archive
-#     return unless can_be_archived?
+  #   def move_to_archive
+  #     return unless can_be_archived?
 
-#     @archived = true
-#   end
-# ---------------------------
-# def can_be_archived?
-#     Date.today.year - @publish_date.year > 10
-#     @label = label
-#     label.add_item(self)
-# end
+  #     @archived = true
+  #   end
+  # ---------------------------
+  # def can_be_archived?
+  #     Date.today.year - @publish_date.year > 10
+  #     @label = label
+  #     label.add_item(self)
+  # end
 
   def label=(label)
     @label = label
