@@ -26,9 +26,8 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  private
-
   def can_be_archived?
-    Date.current.year - @publish_date.year > 10
+    publish_date_object = Date.parse(@publish_date)
+    Date.current.year - publish_date_object.year > 10
   end
 end
