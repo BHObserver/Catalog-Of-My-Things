@@ -1,5 +1,8 @@
 # GameModule Class
 
+require 'fileutils'
+require_relative '../data_manager'
+
 module GameModule
   def list_games
     if games.empty?
@@ -19,6 +22,7 @@ module GameModule
     game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
     author = game_author
     author.add_item(game)
+    DataManager.save_game(game)
     games << game
     puts "\e[32mGame added successfully!\e[0m"
   end
@@ -52,7 +56,6 @@ module GameModule
            "#{game.last_played_at}\t\t|"
       puts '-------------------------------------------------------------------------'
     end
-    save_data('games.json', games)
   end
 
   def get_date_input(prompt)
@@ -66,20 +69,5 @@ module GameModule
   def get_yes_no_input(prompt)
     print "#{prompt}: "
     gets.chomp.downcase == 'y'
-  end
-
-  def save_data(file_path, data)
-    full_path = File.join('data', file_path)
-    FileUtils.mkdir_p(File.dirname(full_path)) unless File.directory?(File.dirname(full_path))
-    File.write(full_path, JSON.pretty_generate(data.map(&:to_hash)))
-  end
-
-  def load_data(file_path, entity_class)
-    full_path = File.join('data', file_path)
-    return [] unless File.exist?(full_path)
-
-    JSON.parse(File.read(full_path)).map do |data|
-      entity_class.new(*data.values_at(*entity_class.new(nil, nil, nil, nil, nil).to_hash.keys))
-    end
   end
 end
