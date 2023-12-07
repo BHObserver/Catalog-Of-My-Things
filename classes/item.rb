@@ -38,7 +38,7 @@ class Item
 #     Date.today.year - @publish_date.year > 10
 #     @label = label
 #     label.add_item(self)
-#   end
+#  end
 
   def label=(label)
     @label = label
