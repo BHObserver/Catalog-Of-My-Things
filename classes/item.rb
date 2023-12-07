@@ -4,18 +4,17 @@ require 'securerandom'
 require 'date'
 
 class Item
-  attr_accessor :publish_date
-  attr_reader :id, :archived, :label, :author
+  attr_accessor :labels, :publish_date, :archived
+  attr_reader :id, :author
 
-  def initialize(publish_date: nil, archived: false)
-    @id = SecureRandom.uuid
+  def initialize(publish_date)
+    @id = Random.rand(1..1000)
     @publish_date = publish_date
-    @archived = archived
   end
 
   def label=(label)
     @label = label
-    label.add_item(self)
+    label.items << self unless label.items.include?(self)
   end
 
   def author=(author)
