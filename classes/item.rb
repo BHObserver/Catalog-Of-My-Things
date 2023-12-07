@@ -14,7 +14,6 @@ require 'date'
 require 'securerandom'
 
 class Item
-
   attr_accessor :publish_date
   attr_reader :id, :archived, :label, :author
 
