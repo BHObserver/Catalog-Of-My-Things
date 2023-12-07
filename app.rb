@@ -211,4 +211,7 @@ class App
     print "#{prompt}: "
     gets.chomp.downcase == 'y'
   end
+
+  private
+
 end

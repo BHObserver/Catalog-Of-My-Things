@@ -12,9 +12,16 @@ def main
   loop do
     display_options
     input_number = gets.chomp.to_i
-    break if input_number == 10
-    actions(input_number, app)
-    handle_menu_choice(input_number, app, book_refactor)
+
+    if input_number == 10
+      puts "\e[31mThank you for using this app! ♥️ \e[0m"
+      break
+    end
+    if input_number < 4
+        handle_menu_choice(input_number, app, book_refactor)
+      elsif input_number > 3
+        actions(input_number, app)
+    end
   end
 end
 
@@ -45,27 +52,24 @@ def actions(input_number, app)
     app.list_all_albums
   when 9
     app.list_all_genres
-  when 10
-    puts 'Thank you for using this app! ♥️ '
-    app.save_data
-    exit
   else
-    puts 'Invalid option, try again'
+    puts 'Invalid option. Please try again.'
   end
 end
 
 def display_options
-  puts 'Please enter or input any option [1-10]'
-  puts '1. - Add book'
-  puts '2. - List all books'
-  puts '3. - List all labels'
-  puts '4. - Add a game'
-  puts '5. - List all games'
-  puts '6. - List all authors'
-  puts '7. - Add a music album'
-  puts '8. - List all music albums'
-  puts '9. - List all genres'
-  puts '10. - Exit'
+  puts  "\e[35mPlease Enter or Input Any Option [1-10]\e[0m"
+  puts "\e[33m1. - 📚 Add book\e[0m"
+  puts "\e[33m2. - 📖 List all books\e[0m"
+  puts "\e[33m3. - 🏷 List all labels\e[0m"
+  puts "\e[32m4. - 🎮 Add a game\e[0m"
+  puts "\e[32m5. - 🎲 List all games\e[0m"
+  puts "\e[32m6. - 👤 List all authors\e[0m"
+  puts "\e[34m7. - 🎵 Add a music album\e[0m"
+  puts "\e[34m8. - 📀 List all music albums\e[0m"
+  puts "\e[34m9. - 🎶 List all genres\e[0m"
+  puts "\e[31m10. - 🚪 Exit\e[0m"
 end
+
 
 main
