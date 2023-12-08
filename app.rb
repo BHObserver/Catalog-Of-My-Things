@@ -170,6 +170,17 @@ class App
       end
     end
   end
+
+  def add_music_album
+    puts "\nAdd a music album:"
+    publish_date = get_date_input('Published date (dd/mm/yy)')
+    name = get_yes_no_input('Name of Album')
+    on sporify? = get_date_input('Yes or No [Y/N]')
+
+   
+
+    puts "\e[32mGame added successfully!\e[0m"
+  end
   
 
   def add_game
