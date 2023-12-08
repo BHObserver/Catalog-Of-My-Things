@@ -10,6 +10,6 @@ class MusicAlbum < Item
   end
 
   def can_be_archived?
-    super && (Date.today - @last_played_at).to_i > 365 * 2
+    super && on_spotify
   end
 end
