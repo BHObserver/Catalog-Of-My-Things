@@ -21,6 +21,7 @@ class App
   def add_label(title, color)
     label = Label.new(title, color)
     @labels << label
+    save_labels
   end
 
   def list_all_labels
@@ -60,6 +61,7 @@ class App
     puts 'The book is added successfully ✅'
     puts '--__--__--__--__--__--__--__--__--'
     puts ' '
+    save_data
   end
 
   def save_data
