@@ -1,5 +1,5 @@
 # genre class
-
+require 'securerandom'
 require_relative 'item'
 
 class Genre < Item
@@ -14,7 +14,7 @@ class Genre < Item
   end
 
   def add_item(item)
-    return if @album.include?(item)
+    return if @items.include?(item)
 
     @items << item
     item.genre(self)
