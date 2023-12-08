@@ -18,6 +18,7 @@ class App
     @labels = []
     @books = []
     @genres = []
+    @albums = []
   end
 
   def add_label(title, color)
@@ -153,6 +154,23 @@ class App
       end
     end
   end
+
+  def list_all_albums
+    if @albums.empty?
+      puts "\n\e[31mNo music albums available!\e[0m\n"
+    else
+      puts "\nList of Music Albums\n\n"
+      puts '-------------------------------------------------------------------------'
+      puts "| Publish Date \t\t| On Spotify \t\t\t|"
+      puts '-------------------------------------------------------------------------'
+  
+      @albums.each do |album|
+        puts "| #{album.published_date} \t| #{album.on_spotify ? 'Yes' : 'No'} \t\t\t|"
+        puts '-------------------------------------------------------------------------'
+      end
+    end
+  end
+  
 
   def add_game
     puts "\nAdd a game:"
