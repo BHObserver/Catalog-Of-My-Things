@@ -4,6 +4,7 @@ require_relative 'classes/author'
 require_relative 'data_manager'
 require_relative 'classes/book'
 require_relative 'classes/label'
+require_relative 'classes/genre'
 require 'json'
 
 
@@ -16,6 +17,7 @@ class App
     @authors = DataManager.load_authors
     @labels = []
     @books = []
+    @genres = []
   end
 
   def add_label(title, color)
@@ -131,6 +133,22 @@ class App
         puts "| #{game.publish_date} \t\t| " \
              "#{game.multiplayer ? 'Multiplayer' : 'Singleplayer'}\t\t| " \
              "#{game.last_played_at}\t\t|"
+        puts '-------------------------------------------------------------------------'
+      end
+    end
+  end
+
+  def list_all_genres
+    if @genres.empty?
+      puts "\n\e[31mNo genres available!\e[0m\n"
+    else
+      puts "\nList of Genres\n\n"
+      puts '-------------------------------------------------------------------------'
+      puts "| Name | "
+      puts '-------------------------------------------------------------------------'
+
+      @genres.each do |genre|
+        puts "| #{genre.name} \t\t| "
         puts '-------------------------------------------------------------------------'
       end
     end
