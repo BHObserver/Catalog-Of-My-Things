@@ -4,8 +4,8 @@ require 'securerandom'
 require 'date'
 
 class Item
-  attr_accessor :labels, :publish_date, :archived
-  attr_reader :id, :author
+  attr_accessor :publish_date, :archived
+  attr_reader :id, :author, :label, :genre
 
   def initialize(publish_date)
     @id = Random.rand(1..1000)
@@ -20,6 +20,11 @@ class Item
   def author=(author)
     @author = author
     author.add_item(self) unless author.items.include?(self)
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.add_item(self) unless genre.items.include?(self)
   end
 
   def move_to_archive
