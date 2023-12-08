@@ -171,15 +171,42 @@ class App
     end
   end
 
+
+
   def add_music_album
     puts "\nAdd a music album:"
     publish_date = get_date_input('Published date (dd/mm/yy)')
     name = get_yes_no_input('Name of Album')
-    on sporify? = get_date_input('Yes or No [Y/N]')
+    on_spotify = get_yes_no_input('[Y/N]')
 
-   
+    genre = add_genre
+    album = MusicAlbum.new(on_spotify: on_spotify, published_date: publish_date, )
 
-    puts "\e[32mGame added successfully!\e[0m"
+    genre.add_item(genre)
+
+    # append genre
+    @albums << album
+
+    puts "\e[32mMusic Album added successfully!\e[0m"
+  end
+
+  def add_genre
+    puts "\Enter genre details:"
+    name = get_input('Name')
+    date = get_date_input('Published date (dd/mm/yy)')
+
+    genre = Genre.new(name: name, published_date: date)
+
+    @genres ||= []
+
+    @genres << genre
+
+    # DataManager.save_author(@authors)
+
+    puts "\e[32mGenre added successfully!\e[0m"
+
+    # Return the newly created author
+    genre
   end
   
 
