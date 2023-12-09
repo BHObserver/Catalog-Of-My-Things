@@ -1,7 +1,6 @@
 require_relative 'app'
 require_relative 'book_refactor'
 
-
 def main
   puts 'Welcome to the Catalog of my things App!'
   puts ' '
@@ -69,6 +68,5 @@ def display_options
   puts "\e[34m9. - 🎶 List all genres\e[0m"
   puts "\e[31m10. - 🚪 Exit\e[0m"
 end
-
 
 main
