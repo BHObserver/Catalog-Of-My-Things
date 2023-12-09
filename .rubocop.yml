@@ -2,9 +2,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "Guardfile"
-    - "Rakefile"
-    - 'main.rb'
-    - 'app.rb'
+    - "Rakefile"  
     - "node_modules/**/*"
 
   DisplayCopNames: true
