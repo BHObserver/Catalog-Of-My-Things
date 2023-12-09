@@ -194,9 +194,8 @@ class App
     @genres ||= []
     @genres << genre
 
-    # DataManager.save_author(@authors)
-
-    puts "\e[32mGenre added successfully!\e[0m"
+    DataManager.save_genre(@genres)
+    DataManager.save_album(@albums)
 
     genre
   end
