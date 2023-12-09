@@ -6,6 +6,7 @@ class MusicAlbum < Item
   def initialize(published_date, on_spotify = false)
     super(published_date)
     @on_spotify = on_spotify
+    @published_date = published_date
   end
 
   def can_be_archived?
