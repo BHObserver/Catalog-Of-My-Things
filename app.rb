@@ -16,8 +16,8 @@ class App
     @authors = DataManager.load_authors
     @labels = []
     @books = []
-    @genres = []
-    @albums = []
+    @genres = DataManager.load_genres
+    @albums = DataManager.load_albums
   end
 
   def add_label(title, color)
@@ -202,16 +202,10 @@ class App
     publish_date = get_date_input('Published date (dd/mm/yy)')
     multiplayer = get_yes_no_input('Multiplayer [Y/N]')
     last_played_at = get_date_input('Last played at (dd/mm/yy)')
-
     author = add_author
     game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
-
-    # Associate the game with the author
     author.add_item(game)
-
-    # Append the new game
     @games << game
-
     DataManager.save_game(@games)
     DataManager.save_author(@authors)
 
@@ -241,10 +235,8 @@ class App
 
     author = Author.new(first_name: first_name, last_name: last_name)
 
-    # If @authors is nil or not initialized, initialize it as an empty array
     @authors ||= []
 
-    # Append the new author
     @authors << author
 
     DataManager.save_author(@authors)
