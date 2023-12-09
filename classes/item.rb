@@ -32,8 +32,8 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  private 
-  
+  private
+
   def can_be_archived?
     return false unless @publish_date
 

@@ -31,7 +31,6 @@ class DataManager
       []
     end
   end
-  
 
   def self.load_albums
     if File.exist?('./data/albums.json')
