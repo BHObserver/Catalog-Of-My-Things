@@ -2,7 +2,7 @@ AllCops:
   NewCops: enable
   Exclude:
     - "Guardfile"
-    - "Rakefile"
+    - "Rakefile"  
     - "node_modules/**/*"
 
   DisplayCopNames: true
@@ -10,18 +10,14 @@ AllCops:
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Enabled: false
+  Max: 20
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
-  Max: 150
+  Max: 220
 Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 30
-Metrics/CyclomaticComplexity:
-  Max: 30
-
-
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -33,9 +29,8 @@ Style/AndOr:
 Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
-  EnforcedStyle: true
-Style/FrozenStringLiteralComment:
-  Enabled: true
+
+  EnforcedStyle: never
 
 Layout/HashAlignment:
   EnforcedColonStyle: key

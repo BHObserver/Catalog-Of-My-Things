@@ -1,18 +1,16 @@
-# frozen_string_literal: true
+# item class
 
-require 'date'
 require 'securerandom'
+require 'date'
 
 class Item
-  attr_accessor :published_date
+  attr_accessor :publish_date
+  attr_reader :id, :author, :label, :genre, :archived
 
-  def initialize(published_date)
-    @id = generate_id
-    @genre = genre
-    @author = author
-    @label = label
-    @published_date = published_date
-    @archived = false
+  def initialize(publish_date, archived: false)
+    @id = Random.rand(1..1000)
+    @publish_date = publish_date
+    @archived = archived
   end
 
   def label=(label)
@@ -20,14 +18,14 @@ class Item
     label.items << self unless label.items.include?(self)
   end
 
-  def genre=(item)
-    @genre = item
-    genre.items << self unless genre.items.include?(self)
-  end
-
   def author=(author)
     @author = author
-    author.items << self unless author.items.include?(self)
+    author.add_item(self) unless author.items.include?(self)
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.add_item(self) unless genre.items.include?(self)
   end
 
   def move_to_archive
@@ -36,11 +34,10 @@ class Item
 
   private
 
-  def generate_id
-    SecureRandom.rand(1..1000)
-  end
-
   def can_be_archived?
-    (Date.today - @published_date).to_i > 365 * 10
+    return false unless @publish_date
+
+    publish_date_object = Date.parse(@publish_date)
+    (Date.today.year - publish_date_object.year) > 10
   end
 end
