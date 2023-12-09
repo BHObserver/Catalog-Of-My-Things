@@ -9,6 +9,41 @@ class DataManager
     File.write('./data/authors.json', JSON.dump(authors))
   end
 
+  def self.save_genre(genres)
+    File.write('./data/genres.json', JSON.dump(genres))
+  end
+
+  def self.save_album(albums)
+    File.write('./data/albums.json', JSON.dump(albums))
+  end
+
+  def self.load_genres
+    if File.exist?('./data/genres.json')
+      JSON.parse(File.read('./data/genres.json')).map do |genre|
+        Genre.new(
+          id: genre['id'],
+          name: genre['name'],
+          published_date: genre['published_date']
+        )
+      end
+    else
+      File.write('./data/genres.json', JSON.dump([]))
+      []
+    end
+  end
+  
+
+  def self.load_albums
+    if File.exist?('./data/albums.json')
+      JSON.parse(File.read('./data/albums.json')).map do |album|
+        MusicAlbum.new(published_date: album['published_date'], on_spotify: album['on_spotify'])
+      end
+    else
+      File.write('./data/albums.json', JSON.dump([]))
+      []
+    end
+  end
+
   def self.load_games
     if File.exist?('./data/games.json')
       JSON.parse(File.read('./data/games.json')).map do |game|

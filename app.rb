@@ -16,6 +16,7 @@ class App
   def initialize
     @games = DataManager.load_games
     @authors = DataManager.load_authors
+    
     @labels = []
     @books = []
     @genres = []
@@ -162,7 +163,7 @@ class App
     else
       puts "\nList of Music Albums\n\n"
       puts '-------------------------------------------------------------------------'
-      puts "| Publish Date \t\t| On Spotify \t\t|"
+      puts "| Publish Date \t\t| On Spotify \t|"
       puts '-------------------------------------------------------------------------'
   
       @albums.each do |album|

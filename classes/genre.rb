@@ -3,7 +3,7 @@ require 'securerandom'
 require_relative 'item'
 
 class Genre < Item
-  attr_accessor :name, :items
+  attr_accessor :name, :published_date, :items
   attr_reader :id
 
   def initialize(name, published_date)
@@ -24,5 +24,13 @@ class Genre < Item
 
   def generate_id
     SecureRandom.rand(1..1000)
+  end
+
+  def to_json(option = {})
+  {
+    id: @id,
+    name: @name,
+    published_date: @published_date
+  }.to_json(option)
   end
 end
