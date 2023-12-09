@@ -1,15 +1,14 @@
-require 'date'
 require_relative 'item'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify
 
-  def initialize(on_spotify: false, **item_params)
-    super(**item_params)
+  def initialize(published_date, on_spotify = false)
+    super(published_date)
     @on_spotify = on_spotify
   end
 
   def can_be_archived?
-    super && on_spotify
+    super && @on_spotify
   end
 end

@@ -5,6 +5,7 @@ require_relative 'data_manager'
 require_relative 'classes/book'
 require_relative 'classes/label'
 require_relative 'classes/genre'
+require_relative 'classes/music'
 require 'json'
 
 
@@ -144,13 +145,13 @@ class App
       puts "\n\e[31mNo genres available!\e[0m\n"
     else
       puts "\nList of Genres\n\n"
-      puts '-------------------------------------------------------------------------'
-      puts "| Name | "
-      puts '-------------------------------------------------------------------------'
+      puts '-------------------------------------------------'
+      puts "| Name \t\t| "
+      puts '-------------------------------------------------'
 
       @genres.each do |genre|
         puts "| #{genre.name} \t\t| "
-        puts '-------------------------------------------------------------------------'
+        puts '-------------------------------------------------'
       end
     end
   end
@@ -161,51 +162,42 @@ class App
     else
       puts "\nList of Music Albums\n\n"
       puts '-------------------------------------------------------------------------'
-      puts "| Publish Date \t\t| On Spotify \t\t\t|"
+      puts "| Publish Date \t\t| On Spotify \t\t|"
       puts '-------------------------------------------------------------------------'
   
       @albums.each do |album|
-        puts "| #{album.published_date} \t| #{album.on_spotify ? 'Yes' : 'No'} \t\t\t|"
+        puts "| #{album.publish_date} \t\t| #{album.on_spotify ? 'Yes' : 'No'} \t\t|"
         puts '-------------------------------------------------------------------------'
       end
     end
   end
 
-
-
   def add_music_album
     puts "\nAdd a music album:"
-    publish_date = get_date_input('Published date (dd/mm/yy)')
-    name = get_yes_no_input('Name of Album')
-    on_spotify = get_yes_no_input('[Y/N]')
+    date = get_date_input('Published date (dd/mm/yy)')
+    spotify = get_yes_no_input('On Spotify? [Y/N]')
 
-    genre = add_genre
-    album = MusicAlbum.new(on_spotify: on_spotify, published_date: publish_date, )
+    genre = add_genre(date)
+    album = MusicAlbum.new(date, spotify)
 
-    genre.add_item(genre)
+    genre.add_item(album)
 
-    # append genre
     @albums << album
 
     puts "\e[32mMusic Album added successfully!\e[0m"
   end
 
-  def add_genre
-    puts "\Enter genre details:"
-    name = get_input('Name')
-    date = get_date_input('Published date (dd/mm/yy)')
+  def add_genre(date)
+    name = get_input('Genre name: ')
 
-    genre = Genre.new(name: name, published_date: date)
-
+    genre = Genre.new(name, date)
     @genres ||= []
-
     @genres << genre
 
     # DataManager.save_author(@authors)
 
     puts "\e[32mGenre added successfully!\e[0m"
 
-    # Return the newly created author
     genre
   end
   

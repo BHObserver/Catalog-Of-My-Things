@@ -3,7 +3,7 @@ require 'securerandom'
 require_relative 'item'
 
 class Genre < Item
-  attr_accessor :name, :albums
+  attr_accessor :name, :items
   attr_reader :id
 
   def initialize(name, published_date)
@@ -17,7 +17,7 @@ class Genre < Item
     return if @items.include?(item)
 
     @items << item
-    item.genre(self)
+    item.genre = self
   end
 
   private
