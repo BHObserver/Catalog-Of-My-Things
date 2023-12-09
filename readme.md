@@ -3,6 +3,8 @@
 
   <h1><b>Ruby Group Capstone - Catalog Of My Things</b></h1>
 
+**Ruby Group Capstone Project - Catalog of My Things**
+    In this project, we've developed a console app to assist you in cataloging your belongings, including books, music albums, movies, and games. Our implementation aligns with a provided UML class diagram, utilizing JSON files for data storage. Additionally, we've incorporated a corresponding database structure mirroring our program's class organization.
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -123,6 +125,19 @@ It will install the required gemfile for running the project
 - GitHub: [@githubhandle](https://github.com/yayaismaail)
 - Twitter: [@twitterhandle](https://mobile.twitter.com/IsmailhalliruM1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/ismail-halliru-muhammad-2a8453127/)
+
+👤 **Omet Omeni (Ometman)**
+- GitHub: [@ometman](https://github.com/ometman)
+- Twitter: [@twitterhandle](https://twitter.com/ometman)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ometman/)
+
+👤 👤 **Burhan Uddin**
+
+- GitHub: [Burhan Uddin](https://github.com/BHObserver/)
+- Twitter: [Burhan Uddin](https://twitter.com/BurhanU14173360)
+- LinkedIn: [Burhan Uddin](https://www.linkedin.com/in/bhobserver/)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
