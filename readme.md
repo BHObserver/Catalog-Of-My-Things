@@ -13,6 +13,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -28,9 +29,9 @@
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Ruby Catalog<a name="about-project"></a>
-
 ### Ruby Group Capstone Project - Catalog of My Things
   In this project, we've developed a console app to assist you in cataloging your belongings, including books, music albums and games. Our implementation aligns with a provided UML class diagram, utilizing JSON files for data storage. Additionally, we've incorporated a corresponding database structure mirroring our program's class organization.
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -51,6 +52,14 @@
 - 🔰 **[ List all items added ]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 🚀 Live Demo <a name="-live-demo-"></a>
+
+- https://drive.google.com/file/d/1BP3SLWTzGI0fs6dmSKnRhPtVOEoWEXsE/view?usp=sharing
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -114,19 +123,6 @@ It will install the required gemfile for running the project
 - GitHub: [@githubhandle](https://github.com/yayaismaail)
 - Twitter: [@twitterhandle](https://mobile.twitter.com/IsmailhalliruM1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/ismail-halliru-muhammad-2a8453127/)
-
-👤 **Omet Omeni (Ometman)**
-- GitHub: [@ometman](https://github.com/ometman)
-- Twitter: [@twitterhandle](https://twitter.com/ometman)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ometman/)
-
-👤 👤 **Burhan Uddin**
-
-- GitHub: [Burhan Uddin](https://github.com/BHObserver/)
-- Twitter: [Burhan Uddin](https://twitter.com/BurhanU14173360)
-- LinkedIn: [Burhan Uddin](https://www.linkedin.com/in/bhobserver/)
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
@@ -174,6 +170,6 @@ If you like this project, kindly drop a start ⭐️ for the [repository](https:
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/BHObserver/Catalog-Of-My-Things/blob/development/license) licensed.
+This project is [MIT](https://github.com/BHObserver/Catalog-Of-My-Things./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
