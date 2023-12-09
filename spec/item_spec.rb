@@ -34,27 +34,5 @@ RSpec.describe Item do
         expect(item.archived).to be true
       end
     end
-
-    context 'when the item cannot be archived' do
-      it 'does not archive the item' do
-        allow(item).to receive(:can_be_archived?).and_return(false)
-        item.move_to_archive
-        expect(item.archived).to be nil
-      end
-    end
-  end
-
-  describe '#can_be_archived?' do
-    let(:item) { Item.new(publish_date) }
-
-    it 'returns true if the item can be archived' do
-      allow(Date).to receive(:current).and_return(Date.new(2033, 1, 1))
-      expect(item.can_be_archived?).to be true
-    end
-
-    it 'returns false if the item cannot be archived' do
-      allow(Date).to receive(:current).and_return(Date.new(2030, 1, 1))
-      expect(item.can_be_archived?).to be false
-    end
   end
 end

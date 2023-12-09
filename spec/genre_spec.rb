@@ -1,6 +1,6 @@
 require 'rspec'
-require_relative 'classes/genre'
-require_relative 'classes/item'
+require_relative '../classes/genre'
+require_relative '../classes/item'
 
 RSpec.describe Genre do
   describe '#general' do
