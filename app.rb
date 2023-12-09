@@ -4,6 +4,8 @@ require_relative 'classes/author'
 require_relative 'data_manager'
 require_relative 'classes/book'
 require_relative 'classes/label'
+require_relative 'classes/genre'
+require_relative 'classes/music'
 require 'json'
 
 
@@ -14,8 +16,11 @@ class App
   def initialize
     @games = DataManager.load_games
     @authors = DataManager.load_authors
+    
     @labels = []
     @books = []
+    @genres = []
+    @albums = []
   end
 
   def add_label(title, color)
@@ -135,6 +140,67 @@ class App
       end
     end
   end
+
+  def list_all_genres
+    if @genres.empty?
+      puts "\n\e[31mNo genres available!\e[0m\n"
+    else
+      puts "\nList of Genres\n\n"
+      puts '-------------------------------------------------'
+      puts "| Name \t\t| "
+      puts '-------------------------------------------------'
+
+      @genres.each do |genre|
+        puts "| #{genre.name} \t\t| "
+        puts '-------------------------------------------------'
+      end
+    end
+  end
+
+  def list_all_albums
+    if @albums.empty?
+      puts "\n\e[31mNo music albums available!\e[0m\n"
+    else
+      puts "\nList of Music Albums\n\n"
+      puts '-------------------------------------------------------------------------'
+      puts "| Publish Date \t\t| On Spotify \t|"
+      puts '-------------------------------------------------------------------------'
+  
+      @albums.each do |album|
+        puts "| #{album.publish_date} \t\t| #{album.on_spotify ? 'Yes' : 'No'} \t\t|"
+        puts '-------------------------------------------------------------------------'
+      end
+    end
+  end
+
+  def add_music_album
+    puts "\nAdd a music album:"
+    date = get_date_input('Published date (dd/mm/yy)')
+    spotify = get_yes_no_input('On Spotify? [Y/N]')
+
+    genre = add_genre(date)
+    album = MusicAlbum.new(published_date: date, on_spotify: spotify)
+    # album = MusicAlbum.new('2023-01-15')
+    genre.add_item(album)
+
+    @albums << album
+
+    puts "\e[32mMusic Album added successfully!\e[0m"
+  end
+
+  def add_genre(date)
+    name = get_input('Genre name: ')
+
+    genre = Genre.new(name, date)
+    @genres ||= []
+    @genres << genre
+
+    DataManager.save_genre(@genres)
+    DataManager.save_album(@albums)
+
+    genre
+  end
+  
 
   def add_game
     puts "\nAdd a game:"
