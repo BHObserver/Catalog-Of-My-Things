@@ -10,7 +10,6 @@ require 'json'
 
 
 class App
-
   attr_reader :labels, :books, :games, :authors
 
   def initialize
@@ -199,7 +198,6 @@ class App
     genre
   end
 
-
   def add_game
     puts "\nAdd a game:"
     publish_date = get_date_input('Published date (dd/mm/yy)')
@@ -221,7 +219,6 @@ class App
     puts "\e[32mGame added successfully!\e[0m"
   end
 
-
   def list_authors
     if @authors.empty?
       puts "\n\e[31mNo authors available!\e[0m\n"
@@ -240,25 +237,24 @@ class App
 
   def add_author
     puts "\nAdd author details:"
-  first_name = get_input('First name')
-  last_name = get_input('Last name')
+    first_name = get_input('First name')
+    last_name = get_input('Last name')
 
-  author = Author.new(first_name: first_name, last_name: last_name)
+    author = Author.new(first_name: first_name, last_name: last_name)
 
-  # If @authors is nil or not initialized, initialize it as an empty array
-  @authors ||= []
+    # If @authors is nil or not initialized, initialize it as an empty array
+    @authors ||= []
 
-  # Append the new author
-  @authors << author
+    # Append the new author
+    @authors << author
 
-  DataManager.save_author(@authors)
+    DataManager.save_author(@authors)
 
-  puts "\e[32mAuthor added successfully!\e[0m"
+    puts "\e[32mAuthor added successfully!\e[0m"
 
-  # Return the newly created author
-  author
+    # Return the newly created author
+    author
   end
-
 
   def get_input(prompt)
     print "#{prompt}: "
@@ -277,7 +273,4 @@ class App
     print "#{prompt}: "
     gets.chomp.downcase == 'y'
   end
-
-  private
-
 end
