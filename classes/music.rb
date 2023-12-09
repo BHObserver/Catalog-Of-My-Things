@@ -1,3 +1,5 @@
+# genre class
+require 'securerandom'
 require_relative 'item'
 
 class MusicAlbum < Item
@@ -10,11 +12,11 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
-  def to_json(option = {})
+  def to_json(_option = {})
     {
       published_date: @published_date,
       on_spotify: @on_spotify
-    }.to_json(option)
+    }
   end
 
   def can_be_archived?
