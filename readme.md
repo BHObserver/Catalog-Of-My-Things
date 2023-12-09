@@ -3,8 +3,6 @@
 
   <h1><b>Ruby Group Capstone - Catalog Of My Things</b></h1>
 
-**Ruby Group Capstone Project - Catalog of My Things**
-    In this project, we've developed a console app to assist you in cataloging your belongings, including books, music albums, movies, and games. Our implementation aligns with a provided UML class diagram, utilizing JSON files for data storage. Additionally, we've incorporated a corresponding database structure mirroring our program's class organization.
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -15,7 +13,6 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
-  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -32,8 +29,8 @@
 
 # 📖 Ruby Catalog<a name="about-project"></a>
 
-[**Catalog Of My Things**] It is a Ruby project that implements OOP principles like: abstraction, inhertance, polymorphism and encapsulation. It is a catalog of my things, where a user can add, remove, update and view things on catalog. It is a command line application that runs in IRB.
-
+**Ruby Group Capstone Project - Catalog of My Things**
+    In this project, we've developed a console app to assist you in cataloging your belongings, including books, music albums, movies, and games. Our implementation aligns with a provided UML class diagram, utilizing JSON files for data storage. Additionally, we've incorporated a corresponding database structure mirroring our program's class organization.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -54,14 +51,6 @@
 - 🔰 **[ List all items added ]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-- [Video Presentation Link](coming soon)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
