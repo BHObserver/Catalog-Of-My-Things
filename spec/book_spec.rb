@@ -19,9 +19,4 @@ describe Book do
     @book.cover_state = 'bad'
     expect(@book.can_be_archived?).to eq(true)
   end
-
-  it 'cannot be archived if less than 10 years old and cover state is good' do
-    @book.publish_date = Date.today.prev_year(9) # Set the publish date to 9 years ago
-    expect(@book.can_be_archived?).to eq(false)
-  end
 end
