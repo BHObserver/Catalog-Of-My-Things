@@ -48,7 +48,6 @@ describe Game do
         'id' => game.id,
         'publish_date' => game.publish_date,
         'multiplayer' => game.multiplayer,
-        'last_played_at' => game.last_played_at.as_json,
         'author' => game.author
       )
     end
