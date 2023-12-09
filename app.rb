@@ -178,11 +178,12 @@ class App
     spotify = get_yes_no_input('On Spotify? [Y/N]')
 
     genre = add_genre(date)
-    album = MusicAlbum.new(published_date: date, on_spotify: spotify)
+    album = MusicAlbum.new(date, on_spotify: spotify)
     genre.add_item(album)
 
     @albums << album
 
+    DataManager.save_album(@albums)
     puts "\e[32mMusic Album added successfully!\e[0m"
   end
 
@@ -194,7 +195,6 @@ class App
     @genres << genre
 
     DataManager.save_genre(@genres)
-    DataManager.save_album(@albums)
 
     genre
   end

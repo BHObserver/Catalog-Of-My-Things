@@ -43,11 +43,6 @@ class DataManager
     end
   end
 
-  # def self.load_data_music
-  #   load_genres
-  #   load_albums
-  # end
-
   def self.load_games
     if File.exist?('./data/games.json')
       JSON.parse(File.read('./data/games.json')).map do |game|
