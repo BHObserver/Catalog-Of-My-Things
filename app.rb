@@ -16,7 +16,6 @@ class App
   def initialize
     @games = DataManager.load_games
     @authors = DataManager.load_authors
-    
     @labels = []
     @books = []
     @genres = []
@@ -165,7 +164,7 @@ class App
       puts '-------------------------------------------------------------------------'
       puts "| Publish Date \t\t| On Spotify \t|"
       puts '-------------------------------------------------------------------------'
-  
+
       @albums.each do |album|
         puts "| #{album.publish_date} \t\t| #{album.on_spotify ? 'Yes' : 'No'} \t\t|"
         puts '-------------------------------------------------------------------------'
@@ -180,7 +179,6 @@ class App
 
     genre = add_genre(date)
     album = MusicAlbum.new(published_date: date, on_spotify: spotify)
-    # album = MusicAlbum.new('2023-01-15')
     genre.add_item(album)
 
     @albums << album
@@ -200,7 +198,7 @@ class App
 
     genre
   end
-  
+
 
   def add_game
     puts "\nAdd a game:"

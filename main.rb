@@ -1,13 +1,12 @@
 require_relative 'app'
 require_relative 'book_refactor'
 
+
 def main
   puts 'Welcome to the Catalog of my things App!'
   puts ' '
   app = App.new
   book_refactor = Refactor.new(app)
-
-  app.load_data
 
   loop do
     display_options
