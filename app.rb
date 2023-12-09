@@ -9,7 +9,7 @@ require_relative 'classes/music'
 require 'json'
 
 class App
-  attr_reader :labels, :books, :games, :authors, :genres, :albums
+  attr_reader :labels, :books, :games, :authors
 
   def initialize
     @games = DataManager.load_games
@@ -21,22 +21,49 @@ class App
   end
 
   def add_label(title, color)
-    @labels << Label.new(title, color)
+    label = Label.new(title, color)
+    @labels << label
     save_labels
   end
 
   def list_all_labels
-    display_list(@labels, 'labels', 'Label: %s, Color: %s')
+    if @labels.empty?
+      puts 'No labels added'
+      puts ' '
+    else
+      puts 'List of all labels:'
+      @labels.each_with_index do |label, index|
+        puts "#{index + 1}. Label: #{label.title}, Color: #{label.color}"
+        puts ' '
+      end
+    end
   end
 
   def list_all_books
-    display_list(@books, 'books', '[Book], ID: %s, Publisher: %s, Publish Date: %s, Cover State: %s, Archived: %s')
+    if @books.empty?
+      puts 'No books added'
+      puts ' '
+    else
+      @books.each_with_index do |book, index|
+        print "#{index + 1}-[Book], "
+        print "ID: #{book.id}, "
+        print "Publisher: #{book.publisher}, "
+        print "Publish Date: #{book.publish_date}, "
+        print "Cover State: #{book.cover_state}, "
+        puts "Archived: #{book.can_be_archived?}"
+        puts ' '
+      end
+    end
   end
 
   def add_book(publisher, cover_state, publish_date)
-    @books << Book.new(publish_date, publisher, cover_state)
+    book = Book.new(publish_date, publisher, cover_state)
+    @books << book
+    puts ' '
+    puts 'The book is added successfully ✅'
+    puts '--__--__--__--__--__--__--__--__--'
+    puts ' '
     save_data
-    puts "\nThe book is added successfully ✅\n--__--__--__--__--__--__--__--__--\n"
   end
 
   def save_data
@@ -50,121 +77,182 @@ class App
   end
 
   def load_books
-    @books = load_data_from_file('data/book.json', Book)
-  end
-
-  def save_books
-    save_data_to_file('data/book.json', @books, %w[id publish_date publisher cover_state])
-  end
-
-  def load_labels
-    @labels = load_data_from_file('data/label.json', Label)
-  end
-
-  def save_labels
-    save_data_to_file('data/label.json', @labels, %w[title color])
-  end
-
-  def list_games
-    display_list(@games, 'games', 'Publish Date: %s, Mode: %s, Last Played At: %s', true)
-  end
-
-  def list_all_genres
-    display_list(@genres, 'genres', 'Name: %s')
-  end
-
-  def list_all_albums
-    display_list(@albums, 'music albums', 'Publish Date: %s, On Spotify: %s', true)
-  end
-
-  def add_music_album
-    date = get_date_input('Published date (dd/mm/yy)')
-    spotify = get_yes_no_input('On Spotify? [Y/N]')
-    genre = add_genre(date)
-    album = MusicAlbum.new(date, on_spotify: spotify)
-    genre.add_item(album)
-    @albums << album
-    DataManager.save_album(@albums)
-    puts "\e[32mMusic Album added successfully!\e[0m"
-  end
-
-  def add_genre(date)
-    name = get_input('Genre name')
-    genre = Genre.new(name, date)
-    @genres ||= []
-    @genres << genre
-    DataManager.save_genre(@genres)
-    genre
-  end
-
-  def add_game
-    publish_date = get_date_input('Published date (dd/mm/yy)')
-    multiplayer = get_yes_no_input('Multiplayer [Y/N]')
-    last_played_at = get_date_input('Last played at (dd/mm/yy)')
-    author = add_author
-    game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
-    author.add_item(game)
-    @games << game
-    DataManager.save_game(@games)
-    DataManager.save_author(@authors)
-    puts "\e[32mGame added successfully!\e[0m"
-  end
-
-  def list_authors
-    display_list(@authors, 'authors', 'ID: %s, Name: %s %s')
-  end
-
-  def add_author
-    first_name = get_input('First name')
-    last_name = get_input('Last name')
-    author = Author.new(first_name: first_name, last_name: last_name)
-    @authors ||= []
-    @authors << author
-    DataManager.save_author(@authors)
-    puts "\e[32mAuthor added successfully!\e[0m"
-    author
-  end
-
-  private
-
-  def display_list(items, title, format, header: false)
-    if items.empty?
-      puts "\n\e[31mNo #{title} available!\e[0m\n"
-    else
-      puts "\nList of #{title.capitalize}\n\n"
-      puts line_separator(header ? format.split(',').length : 1)
-
-      items.each do |item|
-        values = format.split(',').map do |field|
-          item.respond_to?(field.strip.to_sym) ? item.send(field.strip.to_sym) : field.strip
-        end
-        puts "| #{values.join(' | ')} |"
-        puts line_separator(format.split(',').length)
-      end
-    end
-  end
-
-  def line_separator(columns)
-    separator = columns.times.map { '-' * 25 }.join('+')
-    "+#{separator}+"
-  end
-
-  def load_data_from_file(file_path, item_class)
-    if File.exist?(file_path)
-      data = JSON.parse(File.read(file_path))
-      data.map { |item_data| item_class.new(*item_data.values) }
+    if File.exist?('data/book.json')
+      data = JSON.parse(File.read('data/book.json'))
+      @books = data.map { |book| Book.new(book['publish_date'], book['publisher'], book['cover_state']) }
     else
       []
     end
   end
 
-  def save_data_to_file(file_path, items, fields)
-    File.open(file_path, 'w') do |file|
-      data = items.map do |item|
-        fields.each_with_object({}) { |field, hash| hash[field] = item.send(field) }
+  def save_books
+    File.open('data/book.json', 'w') do |file|
+      data = @books.map do |book|
+        {
+          'id' => book.id,
+          'publish_date' => book.publish_date,
+          'publisher' => book.publisher,
+          'cover_state' => book.cover_state
+        }
       end
       file.write(JSON.generate(data))
     end
+  end
+
+  def load_labels
+    if File.exist?('data/label.json')
+      data = JSON.parse(File.read('data/label.json'))
+      @labels = data.map { |label| Label.new(label['title'], label['color']) }
+    else
+      []
+    end
+  end
+
+  def save_labels
+    File.open('data/label.json', 'w') do |file|
+      data = @labels.map do |label|
+        {
+          'title' => label.title,
+          'color' => label.color
+        }
+      end
+      file.write(JSON.generate(data))
+    end
+  end
+
+  def list_games
+    if @games.empty?
+      puts "\n\e[31mNo games available!\e[0m\n"
+    else
+      puts "\nList of Games\n\n"
+      puts '-------------------------------------------------------------------------'
+      puts "| Publish Date \t\t| Mode \t\t\t| Last Played At \t|"
+      puts '-------------------------------------------------------------------------'
+
+      @games.each do |game|
+        puts "| #{game.publish_date} \t\t| " \
+             "#{game.multiplayer ? 'Multiplayer' : 'Singleplayer'}\t\t| " \
+             "#{game.last_played_at}\t\t|"
+        puts '-------------------------------------------------------------------------'
+      end
+    end
+  end
+
+  def list_all_genres
+    if @genres.empty?
+      puts "\n\e[31mNo genres available!\e[0m\n"
+    else
+      puts "\nList of Genres\n\n"
+      puts '-------------------------------------------------'
+      puts "| Name \t\t| "
+      puts '-------------------------------------------------'
+
+      @genres.each do |genre|
+        puts "| #{genre.name} \t\t| "
+        puts '-------------------------------------------------'
+      end
+    end
+  end
+
+  def list_all_albums
+    if @albums.empty?
+      puts "\n\e[31mNo music albums available!\e[0m\n"
+    else
+      puts "\nList of Music Albums\n\n"
+      puts '-------------------------------------------------------------------------'
+      puts "| Publish Date \t\t| On Spotify \t|"
+      puts '-------------------------------------------------------------------------'
+
+      @albums.each do |album|
+        puts "| #{album.publish_date} \t\t| #{album.on_spotify ? 'Yes' : 'No'} \t\t|"
+        puts '-------------------------------------------------------------------------'
+      end
+    end
+  end
+
+  def add_music_album
+    puts "\nAdd a music album:"
+    date = get_date_input('Published date (dd/mm/yy)')
+    spotify = get_yes_no_input('On Spotify? [Y/N]')
+
+    genre = add_genre(date)
+    album = MusicAlbum.new(date, on_spotify: spotify)
+    genre.add_item(album)
+
+    @albums << album
+
+    DataManager.save_album(@albums)
+    puts "\e[32mMusic Album added successfully!\e[0m"
+  end
+
+  def add_genre(date)
+    name = get_input('Genre name: ')
+
+    genre = Genre.new(name, date)
+    @genres ||= []
+    @genres << genre
+
+    DataManager.save_genre(@genres)
+
+    genre
+  end
+
+  def add_game
+    puts "\nAdd a game:"
+    publish_date = get_date_input('Published date (dd/mm/yy)')
+    multiplayer = get_yes_no_input('Multiplayer [Y/N]')
+    last_played_at = get_date_input('Last played at (dd/mm/yy)')
+
+    author = add_author
+    game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
+
+    # Associate the game with the author
+    author.add_item(game)
+
+    # Append the new game
+    @games << game
+
+    DataManager.save_game(@games)
+    DataManager.save_author(@authors)
+
+    puts "\e[32mGame added successfully!\e[0m"
+  end
+
+  def list_authors
+    if @authors.empty?
+      puts "\n\e[31mNo authors available!\e[0m\n"
+    else
+      puts "\nList of Authors \n\n"
+      puts '---------------------------------------------------------'
+      puts "| ID \t\t| Name \t\t\t\t\t|"
+      puts '---------------------------------------------------------'
+
+      @authors.each do |author|
+        puts "| #{author.id} \t\t| #{author.first_name} #{author.last_name}"
+        puts '---------------------------------------------------------'
+      end
+    end
+  end
+
+  def add_author
+    puts "\nAdd author details:"
+    first_name = get_input('First name')
+    last_name = get_input('Last name')
+
+    author = Author.new(first_name: first_name, last_name: last_name)
+
+    # If @authors is nil or not initialized, initialize it as an empty array
+    @authors ||= []
+
+    # Append the new author
+    @authors << author
+
+    DataManager.save_author(@authors)
+
+    puts "\e[32mAuthor added successfully!\e[0m"
+
+    # Return the newly created author
+    author
   end
 
   def get_input(prompt)

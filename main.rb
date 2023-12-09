@@ -6,6 +6,7 @@ def main
   puts ' '
   app = App.new
   book_refactor = Refactor.new(app)
+  app.load_data
 
   loop do
     display_options
