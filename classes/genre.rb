@@ -11,13 +11,14 @@ class Genre < Item
     @id = generate_id
     @name = name
     @items = []
+    @published_date = published_date
   end
 
   def add_item(item)
     return if @items.include?(item)
 
     @items << item
-    item.genre = self
+    # item.genre = self
   end
 
   def to_json(option = {})

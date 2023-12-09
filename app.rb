@@ -179,8 +179,8 @@ class App
     spotify = get_yes_no_input('On Spotify? [Y/N]')
 
     genre = add_genre(date)
-    album = MusicAlbum.new(date, spotify)
-
+    album = MusicAlbum.new(published_date: date, on_spotify: spotify)
+    # album = MusicAlbum.new('2023-01-15')
     genre.add_item(album)
 
     @albums << album
