@@ -18,14 +18,14 @@ class Genre < Item
     return if @items.include?(item)
 
     @items << item
-    # item.genre = self
+    item.genre = self
   end
 
   def to_json(option = {})
   {
     id: @id,
     name: @name,
-    published_date: @publish_date
+    published_date: @published_date
   }.to_json(option)
   end
 
