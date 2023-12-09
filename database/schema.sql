@@ -25,3 +25,18 @@ CREATE TABLE item (
 
 CREATE INDEX idx_book_item_id ON book(item_id);
 CREATE INDEX idx_item_label_id ON item(label_id);
+
+
+CREATE TABLE genres (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    published_date DATE,
+    item_id INTEGER REFERENCES item(id) ON DELETE CASCADE
+);
+
+CREATE TABLE music_albums (
+    id SERIAL PRIMARY KEY,
+    on_spotify BOOLEAN,
+    published_date DATE,
+    item_id INTEGER REFERENCES item(id) ON DELETE CASCADE
+);
