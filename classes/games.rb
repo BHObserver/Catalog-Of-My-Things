@@ -1,6 +1,5 @@
 # games class
 
-require 'active_support/all'
 require_relative 'item'
 require_relative 'author'
 
