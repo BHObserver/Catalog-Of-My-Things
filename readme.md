@@ -29,8 +29,8 @@
 
 # 📖 Ruby Catalog<a name="about-project"></a>
 
-**Ruby Group Capstone Project - Catalog of My Things**
-    In this project, we've developed a console app to assist you in cataloging your belongings, including books, music albums, movies, and games. Our implementation aligns with a provided UML class diagram, utilizing JSON files for data storage. Additionally, we've incorporated a corresponding database structure mirroring our program's class organization.
+### Ruby Group Capstone Project - Catalog of My Things
+  In this project, we've developed a console app to assist you in cataloging your belongings, including books, music albums, movies, and games. Our implementation aligns with a provided UML class diagram, utilizing JSON files for data storage. Additionally, we've incorporated a corresponding database structure mirroring our program's class organization.
 
 ## 🛠 Built With <a name="built-with"></a>
 
