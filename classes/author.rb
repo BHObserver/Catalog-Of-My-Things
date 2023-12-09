@@ -1,4 +1,3 @@
-# author.rb
 class Author
   attr_reader :id, :first_name, :last_name, :items
 
@@ -8,12 +7,12 @@ class Author
     @id = generate_id
     @first_name = first_name
     @last_name = last_name
-    @items = []
+    @items = [] # Initialize @items as an empty array
   end
 
   def add_item(item)
     @items << item
-    item.author = self unless item.author == self
+    item.author = self
   end
 
   def generate_id

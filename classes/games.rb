@@ -1,14 +1,13 @@
 # games class
 
-require 'active_support/all'
-require './classes/author'
-require './classes/item'
+require_relative 'item'
+require_relative 'author'
 
 class Game < Item
-  attr_reader :multiplayer, :last_played_at
+  attr_reader :publish_date, :multiplayer, :last_played_at
 
-  def initialize(multiplayer:, last_played_at:, publish_date: nil, archived: false)
-    super(publish_date: publish_date, archived: archived)
+  def initialize(multiplayer:, last_played_at:, publish_date: nil)
+    super(publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
   end
@@ -25,7 +24,6 @@ class Game < Item
     {
       id: @id,
       publish_date: @publish_date,
-      archived: @archived,
       multiplayer: @multiplayer,
       last_played_at: @last_played_at,
       author: @author
