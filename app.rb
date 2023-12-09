@@ -127,7 +127,7 @@ class App
 
   private
 
-  def display_list(items, title, format, header = false)
+  def display_list(items, title, format, header: false)
     if items.empty?
       puts "\n\e[31mNo #{title} available!\e[0m\n"
     else
