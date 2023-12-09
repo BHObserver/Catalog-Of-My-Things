@@ -17,9 +17,9 @@ def main
       break
     end
     if input_number < 4
-        handle_menu_choice(input_number, app, book_refactor)
-      elsif input_number > 3
-        actions(input_number, app)
+      handle_menu_choice(input_number, app, book_refactor)
+    elsif input_number > 3
+      actions(input_number, app)
     end
   end
 end
@@ -57,7 +57,7 @@ def actions(input_number, app)
 end
 
 def display_options
-  puts  "\e[35mPlease Enter or Input Any Option [1-10]\e[0m"
+  puts "\e[35mPlease Enter or Input Any Option [1-10]\e[0m"
   puts "\e[33m1. - 📚 Add book\e[0m"
   puts "\e[33m2. - 📖 List all books\e[0m"
   puts "\e[33m3. - 🏷 List all labels\e[0m"
