@@ -8,7 +8,6 @@ require_relative 'classes/genre'
 require_relative 'classes/music'
 require 'json'
 
-
 class App
   attr_reader :labels, :books, :games, :authors
 
