@@ -21,12 +21,12 @@ class Genre < Item
     item.genre = self
   end
 
-  def to_json(option = {})
+  def to_json(_option = {})
     {
       id: @id,
       name: @name,
       published_date: @published_date
-    }.to_json(option)
+    }
   end
 
   private
