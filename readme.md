@@ -174,6 +174,6 @@ If you like this project, kindly drop a start ⭐️ for the [repository](https:
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/BHObserver/Catalog-Of-My-Things./LICENSE) licensed.
+This project is [MIT](https://github.com/BHObserver/Catalog-Of-My-Things/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
